@@ -7481,8 +7481,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Milestone-1:-Political-things">Milestone 1: Political things<a class="anchor-link" href="#Milestone-1:-Political-things">¶</a></h1><p>Author: Leonardo Matone
-Webpage:</p>
+<h1 id="Milestone-1:-Congressional-Voting-Patterns-and-Trends">Milestone 1: Congressional Voting Patterns and Trends<a class="anchor-link" href="#Milestone-1:-Congressional-Voting-Patterns-and-Trends">¶</a></h1><p>Author: Leonardo Matone
+Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 </div>
 </div>
@@ -7493,7 +7493,49 @@ Webpage:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Project Description:</p>
+<h2 id="Project-Description:">Project Description:<a class="anchor-link" href="#Project-Description:">¶</a></h2><p>Congress has increasingly become more polarized and complicated in recent decades, and these preliminary investigations are a testament to that. Understanding and quantifying politicians specifically contextualized against one another could be a useful tool towards understanding where politicians lie (no pun intended), and how they can be described.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Data/Resources:">Data/Resources:<a class="anchor-link" href="#Data/Resources:">¶</a></h3><p>I have found two sources of congressional data to investigate so far, but I do hope to find more. My two sources are from Kaggle, and can be loaded into a dataframe with ease:</p>
+<ol>
+<li><a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis/input">Political Polarization of Congress</a></li>
+</ol>
+<ul>
+<li>Is there a relationship between the age of a representative and their polarity?</li>
+<li>Is there a particular demographic which a highly polarized representative may appeal to?</li>
+</ul>
+<ol start="2">
+<li><a href="https://www.kaggle.com/datasets/fivethirtyeight/trump-score">Congress’ Voting Patterns for/against Trump</a></li>
+</ol>
+<ul>
+<li>Can we predict party or polarization from voting patterns for/against Trump?</li>
+<li>Can we estimate polarity from voting patterns?</li>
+</ul>
+<ol start="3">
+<li><a href="https://www.kaggle.com/datasets/etsc9287/2020-general-election-polls">Election, COVID, and Demographic Data by County</a></li>
+</ol>
+<ul>
+<li>Is there are correlation between counties which voted for Trump and representatives who vote with him?</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="ETL-Political-Polarization-of-Congress:">ETL Political Polarization of Congress:<a class="anchor-link" href="#ETL-Political-Polarization-of-Congress:">¶</a></h4><p>Load Kaggle data into a dataframe and do preliminary cleaning and data examination:</p>
 </div>
 </div>
 </div>
@@ -7502,10 +7544,11 @@ Webpage:</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
 </div>
@@ -7518,7 +7561,237 @@ Webpage:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Project Goals:</p>
+<h3 id="Political-Polarization-in-Congress"><a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis">Political Polarization in Congress</a><a class="anchor-link" href="#Political-Polarization-in-Congress">¶</a></h3>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"all_congress_polarization.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">political_polarization_df</span><span class="p">[</span><span class="s2">"congress"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">116</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">political_polarization_df</span><span class="p">[</span><span class="s2">"chamber"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"President"</span><span class="p">)</span> 
+<span class="n">single_congress_df</span> <span class="o">=</span> <span class="n">political_polarization_df</span><span class="p">[</span> <span class="n">mask</span> <span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"died"</span><span class="p">,</span> <span class="s2">"conditional"</span><span class="p">,</span> <span class="s2">"occupancy"</span><span class="p">,</span> <span class="s2">"last_means"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">single_congress_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1"># [single_congress_df.isna().any(axis=1)]</span>
+<span class="c1"># display(single_congress_df.dtypes)</span>
+<span class="c1"># display(single_congress_df.isna().sum())</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">single_congress_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>congress</th>
+<th>chamber</th>
+<th>icpsr</th>
+<th>state_icpsr</th>
+<th>district_code</th>
+<th>state_abbrev</th>
+<th>party_code</th>
+<th>bioname</th>
+<th>bioguide_id</th>
+<th>born</th>
+<th>nominate_dim1</th>
+<th>nominate_dim2</th>
+<th>nominate_log_likelihood</th>
+<th>nominate_geo_mean_probability</th>
+<th>nominate_number_of_votes</th>
+<th>nominate_number_of_errors</th>
+<th>nokken_poole_dim1</th>
+<th>nokken_poole_dim2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>48832</th>
+<td>116</td>
+<td>House</td>
+<td>20301</td>
+<td>41</td>
+<td>3</td>
+<td>AL</td>
+<td>200</td>
+<td>ROGERS, Mike Dennis</td>
+<td>R000575</td>
+<td>1958.0</td>
+<td>0.361</td>
+<td>0.462</td>
+<td>-166.79214</td>
+<td>0.80364</td>
+<td>763.0</td>
+<td>69.0</td>
+<td>0.520</td>
+<td>0.388</td>
+</tr>
+<tr>
+<th>48833</th>
+<td>116</td>
+<td>House</td>
+<td>21102</td>
+<td>41</td>
+<td>7</td>
+<td>AL</td>
+<td>100</td>
+<td>SEWELL, Terri</td>
+<td>S001185</td>
+<td>1965.0</td>
+<td>-0.393</td>
+<td>0.398</td>
+<td>-28.40094</td>
+<td>0.96464</td>
+<td>789.0</td>
+<td>11.0</td>
+<td>-0.430</td>
+<td>0.384</td>
+</tr>
+<tr>
+<th>48834</th>
+<td>116</td>
+<td>House</td>
+<td>21192</td>
+<td>41</td>
+<td>2</td>
+<td>AL</td>
+<td>200</td>
+<td>ROBY, Martha</td>
+<td>R000591</td>
+<td>1976.0</td>
+<td>0.362</td>
+<td>0.658</td>
+<td>-90.42097</td>
+<td>0.88244</td>
+<td>723.0</td>
+<td>31.0</td>
+<td>0.346</td>
+<td>0.672</td>
+</tr>
+<tr>
+<th>48835</th>
+<td>116</td>
+<td>House</td>
+<td>21193</td>
+<td>41</td>
+<td>5</td>
+<td>AL</td>
+<td>200</td>
+<td>BROOKS, Mo</td>
+<td>B001274</td>
+<td>1954.0</td>
+<td>0.652</td>
+<td>-0.417</td>
+<td>-140.71682</td>
+<td>0.83962</td>
+<td>805.0</td>
+<td>57.0</td>
+<td>0.772</td>
+<td>-0.337</td>
+</tr>
+<tr>
+<th>48836</th>
+<td>116</td>
+<td>House</td>
+<td>21376</td>
+<td>41</td>
+<td>1</td>
+<td>AL</td>
+<td>200</td>
+<td>BYRNE, Bradley</td>
+<td>B001289</td>
+<td>1955.0</td>
+<td>0.610</td>
+<td>0.250</td>
+<td>-107.81607</td>
+<td>0.85611</td>
+<td>694.0</td>
+<td>42.0</td>
+<td>0.702</td>
+<td>0.194</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>553</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">single_congress_df</span><span class="p">))</span>
+<span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"chamber"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>553</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>array(['House', 'Senate'], dtype=object)</pre>
+</div>
 </div>
 </div>
 </div>
@@ -7529,11 +7802,7 @@ Webpage:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Work plan:</p>
-<ul>
-<li>what technologies you are using</li>
-<li>when / how often you are meeting to work on this project</li>
-</ul>
+<p>The dataframe we have constructed (after some trial and error) contains 553 representatives of both house and senate, with several descriptors for political polarity. There are a few NaNs after we remove troublesome columns ("died" doesn't apply to a recent session of congress, or at least it shouldn't), but most politicians have a score. There's definitely a lot to work with here. The most challenging part of loading this data was understanding the NaN values. For a while I thought that most of the data was unusable before reading into specific columns and why they might be NaNs.</p>
 </div>
 </div>
 </div>
@@ -7544,13 +7813,105 @@ Webpage:</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Data/Resources:</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Central Questions:</p>
 <ul>
-<li>1 Question</li>
-<li>ETL</li>
-<li>2 Interesting stats</li>
-<li>2 Graphs</li>
+<li><p>Is there a relationship between the age of a representative and their polarity?</p>
+</li>
+<li></li>
 </ul>
+<p>This dataset is interesting as it rates politicians in terms of polarity. Immediately what springs to mind are examining trends over time, when political polarity (extremism) surges, and when it eases. From the graph below, you can see the distace from the mean increase in recent years, while both parties trended closer to the mean during the second world warand through the 60s until the 90s, where both dip away from the mean:</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p><img alt="Alt text" src="image.png"/></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Can we estimate polarity from voting patterns?</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Project-Goals:">Project Goals:<a class="anchor-link" href="#Project-Goals:">¶</a></h4>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Work-plan:">Work plan:<a class="anchor-link" href="#Work-plan:">¶</a></h4><p>I plan to meet (with myself) twice a week to dive into the project. I'll be using Visual Studio Code, JupyterNotebook, and Python to investigate my chosen sources of data.</p>
 </div>
 </div>
 </div>
