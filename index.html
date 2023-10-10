@@ -7481,8 +7481,22 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Milestone-1:-Congressional-Voting-Patterns-and-Trends">Milestone 1: Congressional Voting Patterns and Trends<a class="anchor-link" href="#Milestone-1:-Congressional-Voting-Patterns-and-Trends">¶</a></h1><p>Author: Leonardo Matone
-Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
+<h4 id="Author:-Leonardo-Matone">Author: Leonardo Matone<a class="anchor-link" href="#Author:-Leonardo-Matone">¶</a></h4>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -7493,7 +7507,7 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Project-Description:">Project Description:<a class="anchor-link" href="#Project-Description:">¶</a></h2><p>Congress has increasingly become more polarized and complicated in recent decades, and these preliminary investigations are a testament to that. Understanding and quantifying politicians specifically contextualized against one another could be a useful tool towards understanding where politicians lie (no pun intended), and how they can be described.</p>
+<h2 id="Project-Goals:-Analyzing-Congressional-Voting-Patterns-and-Trends">Project Goals: Analyzing Congressional Voting Patterns and Trends<a class="anchor-link" href="#Project-Goals:-Analyzing-Congressional-Voting-Patterns-and-Trends">¶</a></h2>
 </div>
 </div>
 </div>
@@ -7504,9 +7518,32 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Data/Resources:">Data/Resources:<a class="anchor-link" href="#Data/Resources:">¶</a></h3><p>I have found two sources of congressional data to investigate so far, but I do hope to find more. My two sources are from Kaggle, and can be loaded into a dataframe with ease:</p>
+<p>Congress has increasingly become more polarized and complicated in recent decades, and these preliminary investigations are a testament to that. Understanding and quantifying politicians specifically contextualized against one another could be a useful tool towards understanding where politicians lie (no pun intended), and how they can be described. I will most likely be exmaining Congressional voting patterns. My hope is that I can find patterns in how representatives vote, and predict things about unknown representatives simply based on their voting or how they compare quantitatively to their colleauges. I have selected three preliminary datasets which I hope can provide some clarity for my direction. Not included here is a dataset containing political tweets, a stretch goal of mine is to use the tweets of representatives coupled with a little NLP to predict some dimension of their character, like political party or some polarization metric.</p>
+<p>The main goal of this project is to make large-scale politics more digistible. I've done some work on this in the past (<a href="https://github.com/V993/LegislativeDataAnalytics">New York Data Project</a>) but never in a learning capacity (i.e. machine learning). My work will be centered in this <a href="https://v993.github.io/">website</a> .</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h4 id="Work-plan:">Work plan:<a class="anchor-link" href="#Work-plan:">¶</a></h4><p>I plan to meet (with myself) twice a week to dive into the project and finalize my project vision. Over the next week I want to clearly definte my objectives and experiment with other data sources before continuing. I'll be maintaining a list of to-dos to keep myself on-track. I'll be using Visual Studio Code, JupyterNotebook, GitHub (for personal accounting and the website of course) and Python to investigate my chosen sources of data.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Data/Resources:">Data/Resources:<a class="anchor-link" href="#Data/Resources:">¶</a></h3><p>I have found three sources of congressional data to investigate so far, but I do hope to find more. My sources are from Kaggle, and can be loaded into a dataframe with ease as they are .csv in format:</p>
 <ol>
-<li><a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis/input">Political Polarization of Congress</a></li>
+<li><a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis/input">Political Polarization of Congress</a> (from <a href="https://www.kaggle.com/datasets/justin2028/political-polarization-in-us-congress/data">original source</a>)</li>
 </ol>
 <ul>
 <li>Is there a relationship between the age of a representative and their polarity?</li>
@@ -7535,21 +7572,198 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="ETL-Political-Polarization-of-Congress:">ETL Political Polarization of Congress:<a class="anchor-link" href="#ETL-Political-Polarization-of-Congress:">¶</a></h4><p>Load Kaggle data into a dataframe and do preliminary cleaning and data examination:</p>
+<h3 id="ETL-Political-Polarization-in-Congress:">ETL <a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis">Political Polarization in Congress</a>:<a class="anchor-link" href="#ETL-Political-Polarization-in-Congress:">¶</a></h3><p>Load Kaggle data into a dataframe and do preliminary cleaning and data examination:</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"all_congress_polarization.csv"</span><span class="p">)</span>
+<span class="n">political_polarization_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>congress</th>
+<th>chamber</th>
+<th>icpsr</th>
+<th>state_icpsr</th>
+<th>district_code</th>
+<th>state_abbrev</th>
+<th>party_code</th>
+<th>occupancy</th>
+<th>last_means</th>
+<th>bioname</th>
+<th>...</th>
+<th>died</th>
+<th>nominate_dim1</th>
+<th>nominate_dim2</th>
+<th>nominate_log_likelihood</th>
+<th>nominate_geo_mean_probability</th>
+<th>nominate_number_of_votes</th>
+<th>nominate_number_of_errors</th>
+<th>conditional</th>
+<th>nokken_poole_dim1</th>
+<th>nokken_poole_dim2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>1</td>
+<td>President</td>
+<td>99869</td>
+<td>99</td>
+<td>0</td>
+<td>USA</td>
+<td>5000</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>WASHINGTON, George</td>
+<td>...</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>1</td>
+<td>House</td>
+<td>379</td>
+<td>44</td>
+<td>2</td>
+<td>GA</td>
+<td>4000</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>BALDWIN, Abraham</td>
+<td>...</td>
+<td>1807.0</td>
+<td>-0.165</td>
+<td>-0.373</td>
+<td>-28.55029</td>
+<td>0.758</td>
+<td>103.0</td>
+<td>12.0</td>
+<td>NaN</td>
+<td>-0.429</td>
+<td>-0.817</td>
+</tr>
+<tr>
+<th>2</th>
+<td>1</td>
+<td>House</td>
+<td>4854</td>
+<td>44</td>
+<td>1</td>
+<td>GA</td>
+<td>4000</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>JACKSON, James</td>
+<td>...</td>
+<td>1806.0</td>
+<td>-0.320</td>
+<td>-0.181</td>
+<td>-24.89986</td>
+<td>0.776</td>
+<td>98.0</td>
+<td>9.0</td>
+<td>NaN</td>
+<td>-0.559</td>
+<td>-0.052</td>
+</tr>
+<tr>
+<th>3</th>
+<td>1</td>
+<td>House</td>
+<td>6071</td>
+<td>44</td>
+<td>3</td>
+<td>GA</td>
+<td>4000</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>MATHEWS, George</td>
+<td>...</td>
+<td>1812.0</td>
+<td>-0.428</td>
+<td>-0.317</td>
+<td>-12.62728</td>
+<td>0.880</td>
+<td>99.0</td>
+<td>2.0</td>
+<td>NaN</td>
+<td>-0.413</td>
+<td>-0.232</td>
+</tr>
+<tr>
+<th>4</th>
+<td>1</td>
+<td>House</td>
+<td>1538</td>
+<td>52</td>
+<td>6</td>
+<td>MD</td>
+<td>5000</td>
+<td>0.0</td>
+<td>1.0</td>
+<td>CARROLL, Daniel</td>
+<td>...</td>
+<td>1796.0</td>
+<td>0.116</td>
+<td>-0.740</td>
+<td>-23.47008</td>
+<td>0.783</td>
+<td>96.0</td>
+<td>11.0</td>
+<td>NaN</td>
+<td>0.114</td>
+<td>-0.779</td>
+</tr>
+</tbody>
+</table>
+<p>5 rows × 22 columns</p>
+</div>
 </div>
 </div>
 </div>
@@ -7561,21 +7775,7 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Political-Polarization-in-Congress"><a href="https://www.kaggle.com/code/justin2028/political-polarization-us-congress-data-analysis">Political Polarization in Congress</a><a class="anchor-link" href="#Political-Polarization-in-Congress">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"all_congress_polarization.csv"</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>The data contains information on the chamber of which the representative is part, demographic information about where the representative is from, and several stats on political polarization. There are a few columns we'll want to drop:</p>
 </div>
 </div>
 </div>
@@ -7584,13 +7784,73 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>congress                             0
+chamber                              0
+icpsr                                0
+state_icpsr                          0
+district_code                        0
+state_abbrev                         0
+party_code                           0
+occupancy                         2271
+last_means                        2271
+bioname                              0
+bioguide_id                         67
+born                               289
+died                              9924
+nominate_dim1                      228
+nominate_dim2                      228
+nominate_log_likelihood           1237
+nominate_geo_mean_probability     1237
+nominate_number_of_votes          1237
+nominate_number_of_errors         1237
+conditional                      50484
+nokken_poole_dim1                  466
+nokken_poole_dim2                  466
+dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>"died" has a large number of NaNs and isn't very imperitive to keep for our purposes, "conditional" is mostly NaNs and can be removed, and the same foes for "last_means" and "occupancy".</p>
+<p>For the purposes of this breakdown, we'll take a look at the 116th Congress specifically, and remove "President" entries just to get a better feel for the data:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">political_polarization_df</span><span class="p">[</span><span class="s2">"congress"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">116</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">political_polarization_df</span><span class="p">[</span><span class="s2">"chamber"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"President"</span><span class="p">)</span> 
 <span class="n">single_congress_df</span> <span class="o">=</span> <span class="n">political_polarization_df</span><span class="p">[</span> <span class="n">mask</span> <span class="p">]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">"died"</span><span class="p">,</span> <span class="s2">"conditional"</span><span class="p">,</span> <span class="s2">"occupancy"</span><span class="p">,</span> <span class="s2">"last_means"</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">single_congress_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span> <span class="c1"># [single_congress_df.isna().any(axis=1)]</span>
-<span class="c1"># display(single_congress_df.dtypes)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">single_congress_df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
 <span class="c1"># display(single_congress_df.isna().sum())</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">single_congress_df</span><span class="p">)</span>
 </pre></div>
@@ -7754,8 +8014,32 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 </div>
 </div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>congress                           int64
+chamber                           object
+icpsr                              int64
+state_icpsr                        int64
+district_code                      int64
+state_abbrev                      object
+party_code                         int64
+bioname                           object
+bioguide_id                       object
+born                             float64
+nominate_dim1                    float64
+nominate_dim2                    float64
+nominate_log_likelihood          float64
+nominate_geo_mean_probability    float64
+nominate_number_of_votes         float64
+nominate_number_of_errors        float64
+nokken_poole_dim1                float64
+nokken_poole_dim2                float64
+dtype: object</pre>
+</div>
+</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[55]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>553</pre>
 </div>
@@ -7767,11 +8051,10 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">single_congress_df</span><span class="p">))</span>
-<span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"chamber"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"chamber"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7781,14 +8064,8 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>553</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>array(['House', 'Senate'], dtype=object)</pre>
 </div>
@@ -7802,54 +8079,33 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The dataframe we have constructed (after some trial and error) contains 553 representatives of both house and senate, with several descriptors for political polarity. There are a few NaNs after we remove troublesome columns ("died" doesn't apply to a recent session of congress, or at least it shouldn't), but most politicians have a score. There's definitely a lot to work with here. The most challenging part of loading this data was understanding the NaN values. For a while I thought that most of the data was unusable before reading into specific columns and why they might be NaNs.</p>
+<p>The dataframe we have constructed (after some trial and error) contains 553 representatives of both house and senate, with several descriptors for political polarity. Right off the bat, it seems that the feature types have been correctly assumed by pandas. There are a few NaNs after we remove troublesome columns ("died" doesn't apply to a recent session of congress, or at least it shouldn't), but most politicians have a score. There's definitely a lot to work with here.</p>
+<p>Next, let's examine "party_code" which should obviously be "party":</p>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"party_code"</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">political_polarization_df</span>
-</pre></div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[52]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>array([200, 100, 328])</pre>
 </div>
 </div>
 </div>
@@ -7861,13 +8117,119 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Central Questions:</p>
+<p>Both sources for this data leave this value unlabeled, which is not good. Down the road, this will need to be checked with representatives.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Info which has been recorded from the original source <a href="https://www.kaggle.com/datasets/justin2028/political-polarization-in-us-congress/data">source</a> is:</p>
 <ul>
-<li><p>Is there a relationship between the age of a representative and their polarity?</p>
-</li>
-<li></li>
+<li>The first dimension picks up differences in ideolology, which is represented through the "liberal" vs. "conservative" (also referred to as "left" vs. "right") proportions throughout American history.</li>
+<li>The second dimension picks up differences within the major political parties over slavery, currency, nativism, civil rights, and lifestyle issues during periods of American history.</li>
 </ul>
-<p>This dataset is interesting as it rates politicians in terms of polarity. Immediately what springs to mind are examining trends over time, when political polarity (extremism) surges, and when it eases. From the graph below, you can see the distace from the mean increase in recent years, while both parties trended closer to the mean during the second world warand through the 60s until the 90s, where both dip away from the mean:</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"nominate_dim1"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;AxesSubplot:ylabel='Frequency'&gt;</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYUAAAD4CAYAAAAD6PrjAAAAOXRFWHRTb2Z0d2FyZQBNYXRwbG90bGliIHZlcnNpb24zLjUuMSwgaHR0cHM6Ly9tYXRwbG90bGliLm9yZy/YYfK9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAUE0lEQVR4nO3dfZBldX3n8fdHEAh5kEE6hMygPSRElo1G2Za4a2V9wChKwrC7LBlWN6NhM9nIZpM1WzpIKlipshb3QaK7G+MEDYMxCJIYJouuy2OsrRJwQORRnJEHmRGYjqhodEHId/+4p09dhu7pO02fe7qn36+qW/ec3znn/r5z5tb99HlOVSFJEsBz+i5AkrR0GAqSpJahIElqGQqSpJahIElqHdh3Ac/GEUccUZOTk32XIUnLys033/y3VTUx27RlHQqTk5Ns27at7zIkaVlJ8sBc09x9JElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqLesrmrVvJjdd2Vvf959/Sm99SxqdWwqSpJahIElqGQqSpJahIElqdRYKST6aZHeSO2aZ9rtJKskRzXiSfDDJjiS3JTmhq7okSXPrckvhIuDkPRuTHA28HvjaUPMbgWOb10bgQx3WJUmaQ2ehUFWfAx6dZdIFwDuBGmpbB1xcAzcAhyU5qqvaJEmzG+sxhSTrgF1V9aU9Jq0GHhwa39m0zfYZG5NsS7Jtenq6o0olaWUaWygkORR4N/D7z+ZzqmpzVU1V1dTExKyPGJUkLdA4r2j+KWAt8KUkAGuAW5KcCOwCjh6ad03TJkkao7FtKVTV7VX141U1WVWTDHYRnVBVDwNbgV9tzkJ6BfDtqnpoXLVJkga6PCX1EuDzwIuS7Exy1l5m/zRwL7AD+BPg7V3VJUmaW2e7j6rqzHmmTw4NF3B2V7VIkkbjFc2SpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpJahIElqGQqSpFZnoZDko0l2J7ljqO2/JPlyktuSfCrJYUPTzkmyI8k9Sd7QVV2SpLl1uaVwEXDyHm1XAT9bVS8BvgKcA5DkeGA98A+bZf4oyQEd1iZJmkVnoVBVnwMe3aPt/1TVk83oDcCaZngd8Imqeryq7gN2ACd2VZskaXZ9HlP4NeAzzfBq4MGhaTubNknSGPUSCknOBZ4EPr6AZTcm2ZZk2/T09OIXJ0kr2NhDIclbgV8C3lxV1TTvAo4emm1N0/YMVbW5qqaqampiYqLTWiVppRlrKCQ5GXgncGpVfW9o0lZgfZKDk6wFjgVuGmdtkiQ4sKsPTnIJ8GrgiCQ7gfMYnG10MHBVEoAbqurfVtWdSS4D7mKwW+nsqnqqq9okSbPrLBSq6sxZmj+yl/nfC7y3q3okSfPzimZJUstQkCS1DAVJUstQkCS1DAVJUstQkCS1DAVJUstQkCS1DAVJUstQkCS1DAVJUstQkCS1DAVJUstQkCS1Ort1tqSVZXLTlb31ff/5p/TW9/7GLQVJUstQkCS1DAVJUstQkCS1DAVJUquzUEjy0SS7k9wx1HZ4kquSbG/eVzXtSfLBJDuS3JbkhK7qkiTNrcsthYuAk/do2wRcU1XHAtc04wBvBI5tXhuBD3VYlyRpDp2FQlV9Dnh0j+Z1wJZmeAtw2lD7xTVwA3BYkqO6qk2SNLtxH1M4sqoeaoYfBo5shlcDDw7Nt7Npe4YkG5NsS7Jtenq6u0olaQXq7UBzVRVQC1huc1VNVdXUxMREB5VJ0so17lB4ZGa3UPO+u2nfBRw9NN+apk2SNEbjDoWtwIZmeANwxVD7rzZnIb0C+PbQbiZJ0ph0dkO8JJcArwaOSLITOA84H7gsyVnAA8AZzeyfBt4E7AC+B7ytq7okSXPrLBSq6sw5Jp00y7wFnN1VLZKk0XhFsySpZShIklqGgiSpZShIklojhUKSF3ddiCSpf6NuKfxRkpuSvD3J8zqtSJLUm5FCoap+AXgzg6uOb07y50l+sdPKJEljN/IxharaDvwe8C7gVcAHk3w5yT/vqjhJ0niNekzhJUkuAO4GXgv8clX9g2b4gg7rkySN0ahXNP934ELg3VX1/ZnGqvp6kt/rpDJJ0tiNGgqnAN+vqqcAkjwHOKSqvldVH+usOu03Jjdd2Uu/959/Si/9SsvVqMcUrgZ+aGj80KZNkrQfGXVL4ZCq+u7MSFV9N8mhHdUkSfvELdHFM+qWwt8lOWFmJMk/Ar6/l/klScvQqFsKvwN8MsnXgQA/AfxKV0VJkvoxUihU1ReSHAe8qGm6p6p+0F1ZkqQ+7MtDdl4OTDbLnJCEqrq4k6okSb0YKRSSfAz4KeBW4KmmuQBDQZL2I6NuKUwBxzePzZQk7adGPfvoDgYHlxdFkv+Q5M4kdyS5JMkhSdYmuTHJjiSXJjlosfqTJI1m1FA4ArgryWeTbJ15LaTDJKuBfw9MVdXPAgcA64H3ARdU1U8D3wTOWsjnS5IWbtTdR+/poN8fSvIDBldHP8Tg5nr/qpm+penzQ4vcryRpL0Z9nsLfAPcDz22GvwDcspAOq2oX8F+BrzEIg28DNwPfqqonm9l2AqtnWz7JxiTbkmybnp5eSAmSpDmMeuvsXwcuBz7cNK0G/mohHSZZBawD1gI/CfwwcPKoy1fV5qqaqqqpiYmJhZQgSZrDqMcUzgZeCTwG7QN3fnyBfb4OuK+qppsL4P6y+ezDkszszloD7Frg50uSFmjUUHi8qp6YGWl+vBd6eurXgFckOTRJgJOAu4DrgNObeTYAVyzw8yVJCzRqKPxNknczODj8i8Angb9eSIdVdSODXVG3ALc3NWxm8JjPdyTZATwf+MhCPl+StHCjnn20icEporcDvwF8msGT2Bakqs4Dztuj+V7gxIV+piTp2Rv1hnh/D/xJ85Ik7adGvffRfcxyDKGqjln0iiRJvdmXex/NOAT4l8Dhi1+OJKlPo1689o2h166q+kNg/3sOnSStcKPuPjphaPQ5DLYc9uVZDJKkZWDUH/b/NjT8JINbXpyx6NVIkno16tlHr+m6EElS/0bdffSOvU2vqvcvTjmSpD7ty9lHLwdmnqHwy8BNwPYuipIk9WPUUFgDnFBV3wFI8h7gyqp6S1eFSZLGb9R7Hx0JPDE0/kTTJknaj4y6pXAxcFOSTzXjpzF4OpokaT8y6tlH703yGeAXmqa3VdUXuytLktSHUXcfweBZyo9V1QeAnUnWdlSTJKknoz6O8zwGzzs4p2l6LvBnXRUlSerHqFsK/ww4Ffg7gKr6OvCjXRUlSerHqKHwRFUVze2zk/xwdyVJkvoyaihcluTDwGFJfh24Gh+4I0n7nXnPPkoS4FLgOOAx4EXA71fVVR3XJkkas3lDoaoqyaer6sWAQSBJ+7FRdx/dkuTli9VpksOSXJ7ky0nuTvKPkxye5Kok25v3VYvVnyRpNKOGws8DNyT5apLbktye5LZn0e8HgP9dVccBPwfcDWwCrqmqY4FrmnFJ0hjtdfdRkhdU1deANyxWh0meB/xT4K0AVfUE8ESSdcCrm9m2ANczuDZCkjQm820p/BVAVT0AvL+qHhh+LbDPtcA08KdJvpjkwuYU1yOr6qFmnoeZ44Z7STYm2ZZk2/T09AJLkCTNZr5QyNDwMYvU54HACcCHquplDC6Ie9quouFrIvZUVZuraqqqpiYmJhapJEkSzB8KNcfws7ET2FlVNzbjlzMIiUeSHAXQvO9epP4kSSOaLxR+LsljSb4DvKQZfizJd5I8tpAOq+ph4MEkL2qaTgLuYvBUtw1N2wbgioV8viRp4fZ6oLmqDuio398CPp7kIOBe4G0MAuqyJGcBDwBndNS3JGkOoz5kZ1FV1a0Mnvu8p5PGXIokaci+PE9BkrSfMxQkSa1edh9J6s7kpiv7LkHLmFsKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJahkKkqSWoSBJavUWCkkOSPLFJP+rGV+b5MYkO5JcmuSgvmqTpJWqzy2F3wbuHhp/H3BBVf008E3grF6qkqQVrJdQSLIGOAW4sBkP8Frg8maWLcBpfdQmSStZX89o/kPgncCPNuPPB75VVU824zuB1bMtmGQjsBHgBS94QbdVdsRn6Epaqsa+pZDkl4DdVXXzQpavqs1VNVVVUxMTE4tcnSStbH1sKbwSODXJm4BDgB8DPgAcluTAZmthDbCrh9okaUUb+5ZCVZ1TVWuqahJYD1xbVW8GrgNOb2bbAFwx7tokaaVbStcpvAt4R5IdDI4xfKTneiRpxenrQDMAVXU9cH0zfC9wYp/1SNJKt5S2FCRJPTMUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEktQ0GS1Bp7KCQ5Osl1Se5KcmeS327aD09yVZLtzfuqcdcmSStdH1sKTwK/W1XHA68Azk5yPLAJuKaqjgWuacYlSWM09lCoqoeq6pZm+DvA3cBqYB2wpZltC3DauGuTpJWu12MKSSaBlwE3AkdW1UPNpIeBI+dYZmOSbUm2TU9Pj6dQSVoheguFJD8C/AXwO1X12PC0qiqgZluuqjZX1VRVTU1MTIyhUklaOXoJhSTPZRAIH6+qv2yaH0lyVDP9KGB3H7VJ0krWx9lHAT4C3F1V7x+atBXY0AxvAK4Yd22StNId2EOfrwT+NXB7klubtncD5wOXJTkLeAA4o4faJGlFG3soVNX/BTLH5JPGWYsk6em8olmS1DIUJEktQ0GS1DIUJEktQ0GS1DIUJEmtPq5TkKT9wuSmK3vr+/7zT+nkc91SkCS1DAVJUstQkCS1DAVJUstQkCS1DAVJUmvFnpLa56lkkrRUrdhQ0MqwP55HLnXJ3UeSpJahIElquftI6ojHrbQcuaUgSWoZCpKk1pILhSQnJ7knyY4km/quR5JWkiUVCkkOAP4n8EbgeODMJMf3W5UkrRxLKhSAE4EdVXVvVT0BfAJY13NNkrRiLLWzj1YDDw6N7wR+fniGJBuBjc3od5PcM6baAI4A/naM/T1by61eWH41L7d6YfnVvNzqhTHUnPc9q8VfONeEpRYK86qqzcDmPvpOsq2qpvroeyGWW72w/GpebvXC8qt5udULy7PmGUtt99Eu4Oih8TVNmyRpDJZaKHwBODbJ2iQHAeuBrT3XJEkrxpLafVRVTyb5d8BngQOAj1bVnT2XNayX3VbPwnKrF5ZfzcutXlh+NS+3emF51gxAqqrvGiRJS8RS230kSeqRoSBJahkKQ5IcnuSqJNub91WzzPOaJLcOvf5fktOaaRcluW9o2kuXQs3NfE8N1bV1qH1tkhub24pc2hzg77XeJC9N8vkkdya5LcmvDE0b2zqe75YrSQ5u1tmOZh1ODk07p2m/J8kbuqpxH+t9R5K7mnV6TZIXDk2b9fuxBGp+a5Lpodr+zdC0Dc33aHuSDUuk3guGav1Kkm8NTetlHe+zqvLVvID/DGxqhjcB75tn/sOBR4FDm/GLgNOXYs3Ad+dovwxY3wz/MfCbfdcL/AxwbDP8k8BDwGHjXMcMTnT4KnAMcBDwJeD4PeZ5O/DHzfB64NJm+Phm/oOBtc3nHLAE6n3N0Hf1N2fq3dv3YwnU/Fbgf8yy7OHAvc37qmZ4Vd/17jH/bzE4Waa3dbyQl1sKT7cO2NIMbwFOm2f+04HPVNX3uixqHvtacytJgNcCly9k+QWat96q+kpVbW+Gvw7sBiY6rmtPo9xyZfjfcjlwUrNO1wGfqKrHq+o+YEfzeb3WW1XXDX1Xb2BwHVCfns1tbd4AXFVVj1bVN4GrgJM7qnPGvtZ7JnBJxzUtOkPh6Y6sqoea4YeBI+eZfz3P/E9/b7N5fkGSgxe9wmcateZDkmxLcsPM7i7g+cC3qurJZnwng1uNdGmf1nGSExn8VfbVoeZxrOPZbrmy57pp52nW4bcZrNNRll1s+9rnWcBnhsZn+350bdSa/0Xz/315kpmLW5f0Om52za0Frh1q7mMd77MldZ3COCS5GviJWSadOzxSVZVkzvN1kxwFvJjBNRUzzmHwQ3cQg/OU3wX8wRKp+YVVtSvJMcC1SW5n8CO26BZ5HX8M2FBVf980d7KOV5IkbwGmgFcNNT/j+1FVX539E8bqr4FLqurxJL/BYMvstT3XNIr1wOVV9dRQ21Jdx0+z4kKhql4317QkjyQ5qqoean6Qdu/lo84APlVVPxj67Jm/gB9P8qfAf1wqNVfVrub93iTXAy8D/gI4LMmBzV+6i3JbkcWoN8mPAVcC51bVDUOf3ck6nsUot1yZmWdnkgOB5wHfGHHZxTZSn0lexyCcX1VVj8+0z/H96PoHa96aq+obQ6MXMjgmNbPsq/dY9vpFr/Dp9uX/dT1w9nBDT+t4n7n76Om2AjNnMWwArtjLvM/YX9j8yM3sqz8NuGPxS3yGeWtOsmpmN0uSI4BXAnfV4OjXdQyOjcy5fA/1HgR8Cri4qi7fY9q41vEot1wZ/recDlzbrNOtwPrm7KS1wLHATR3VOXK9SV4GfBg4tap2D7XP+v3ouN5Raz5qaPRU4O5m+LPA65vaVwGv5+lb7b3U29R8HIOD358fautrHe+7vo90L6UXg/3B1wDbgauBw5v2KeDCofkmGfyF8Jw9lr8WuJ3BD9WfAT+yFGoG/klT15ea97OGlj+GwQ/WDuCTwMFLoN63AD8Abh16vXTc6xh4E/AVBn/Nndu0/QGDH1WAQ5p1tqNZh8cMLXtus9w9wBvH9P2dr96rgUeG1unW+b4fS6Dm/wTc2dR2HXDc0LK/1qz7HcDblkK9zfh7gPP3WK63dbyvL29zIUlquftIktQyFCRJLUNBktQyFCRJLUNBktQyFCRJLUNBktT6/1hS0Zi9PTP3AAAAAElFTkSuQmCC"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>We can see here along the first dimension (solely ideological) that in the 116th congress there is a distinctive divide down ideological lines. Most representatives are around 0.5 from the mean of 0.0. The number of representatives in the middle is somehow shockingly low.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">single_congress_df</span><span class="p">[</span><span class="s2">"nominate_dim2"</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[56]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;AxesSubplot:ylabel='Frequency'&gt;</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedImage jp-OutputArea-output" tabindex="0">
+<img alt="No description has been provided for this image" class="jp-needs-light-background" src="data:image/png;base64,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"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Along the second dimension, we can see this just as well. Within party lines, there is not as much division on "lifestyle issues." There is diversity, but judging by the bell curve, there is a trend towards homogeny. This is fairly expected.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="Closing-thoughts:">Closing thoughts:<a class="anchor-link" href="#Closing-thoughts:">¶</a></h3><p>This dataset is interesting as it rates politicians in terms of polarity. Immediately what springs to mind are examining trends over time, when political polarity (extremism) surges, and when it eases. From the graph below, you can see the distace from the mean increase in recent years, while both parties trended closer to the mean during the second world war and through the 60s until the 90s, where both dip away from the mean:</p>
 </div>
 </div>
 </div>
@@ -7889,29 +8251,8 @@ Webpage: <a href="https://v993.github.io/">https://v993.github.io/</a></p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Can we estimate polarity from voting patterns?</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Project-Goals:">Project Goals:<a class="anchor-link" href="#Project-Goals:">¶</a></h4>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Work-plan:">Work plan:<a class="anchor-link" href="#Work-plan:">¶</a></h4><p>I plan to meet (with myself) twice a week to dive into the project. I'll be using Visual Studio Code, JupyterNotebook, and Python to investigate my chosen sources of data.</p>
+<p>Beyond this dataset, I'm interested in how the datasets I've found relate to each other. I was unable to dive into the other two as thoroughly (hence their absence here), but they deal with the same congressional representatives. With more research, I hope to find a way to combine these datasets in some way, or use one to predict values in another. Eventually, I want to create a model based on the data from these datasets (and possily others) to predict quantitative descriptors of representatives in congress. I want to learn from this data in order to describe representatives in a different way, outside of just party lines and the representatives' thick rhetoric.</p>
+<p>This requires extensive data cleaning and parsing, which I'm not ready for yet. My first step after this point will be to continue my explorations into these other datasets, and look for alternatives. Once I've found solid ground, I'll evaluate whether or not I can merge these sets into one dataframe to be analyzed further.</p>
 </div>
 </div>
 </div>
