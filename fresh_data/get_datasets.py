@@ -1,6 +1,10 @@
 
 import re
+import requests
+import numpy as np
 import pandas as pd
+from io import StringIO
+from bs4 import BeautifulSoup
 from fuzzywuzzy import process
 from fuzzymatcher import link_table, fuzzy_left_join
 
@@ -79,6 +83,12 @@ cast_code_mapping = {
     "9" : "Not Voting (Abstention)"
 }
 
+def string_to_percent(str_percent):
+    str_num = re.sub("[%< ]", '', str_percent)
+    if len(str_num) == 1:
+        str_num = "0"+str_num
+    return float("0."+str_num)
+
 def get_age(x):
     born = x["born"]
     died = x["died"]
@@ -101,10 +111,46 @@ def get_populations(root):
     total_population_1970_2020 = total_population_df.loc[:,["Area"]]
 
     for year in [2020, 2010, 2000, 1990, 1980, 1970]:
-        total_population_1970_2020.loc[:, f"{year}_pop"] = total_population_df.loc[:,f"Resident Population {year} Census"]
+        total_population_1970_2020.loc[:, f"{year}"] = total_population_df.loc[:,f"Resident Population {year} Census"]
 
     return total_population_1970_2020
 
+def get_religions():
+    # Scrape the PEW Research Center for their statistics on the current religous landscape:
+    url = "https://www.pewresearch.org/religion/religious-landscape-study/state/"
+    headers = {
+        "User-Agent" : "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36",
+    }
+
+    result = requests.get(url, headers=headers)
+    soup = BeautifulSoup(result.content,  "html.parser")
+
+    # get religions table:
+    religions_df = pd.read_html(StringIO(str(soup.findAll("table")[1])))[0].reindex().transpose().reset_index() # we need to transpose
+    religions_df.columns = religions_df.iloc[0] # Name columns post-transpose
+    # religions_df = religions_df.rename({
+    #     column:re.sub('[()"\\\']', '', column.strip().lower().replace(' ', '_')) for column in religions_df.columns
+    # }, axis=1)
+    religions_df.drop(religions_df.index[0], inplace=True) # Drop column name rows
+    religions_df = religions_df.drop(religions_df.index[-1]) # drop sample size column
+    religions_df = religions_df.map(lambda x: string_to_percent(x) if type(x) == str and '%' in x else x) # Convert string percentages
+
+    # get believe in god table:
+    believe_in_god_df = pd.read_html(StringIO(str(soup.findAll("table")[2])),header=0)[0]
+    believe_in_god_df = believe_in_god_df.drop(["Sample\tsize"], axis=1) # Drop sample size column
+    believe_in_god_df = believe_in_god_df.map(lambda x: string_to_percent(x) if type(x) == str and '%' in x else x) # Convert string percentages
+
+    # merge tables:
+    full_table = pd.merge(
+        believe_in_god_df,
+        religions_df,
+        right_on="Religious tradition",
+        left_on="State",
+        how="inner"
+    ).drop("Religious tradition", axis=1)
+    return full_table
+
+# Polarization data on representatives
 def load_polarization_data():
 
     # Load from CSV:
@@ -120,10 +166,32 @@ def load_polarization_data():
     drop = ["occupancy", "conditional"]
     voteview_polarization_df.drop(drop, axis=1, inplace=True)
 
+    # Rename bioname to representative for integration with other data
+    voteview_polarization_df["representative"] = voteview_polarization_df["bioname"]
+    voteview_polarization_df.drop("bioname", axis=1, inplace=True)
+
+    voteview_polarization_df = voteview_polarization_df[['representative', 'congress', 'chamber', 'icpsr', 'state_icpsr', 'district_code',
+       'state_abbrev', 'party_code', 'last_means', 'bioguide_id', 'born',
+       'died', 'nominate_dim1', 'nominate_dim2', 'nominate_log_likelihood',
+       'nominate_geo_mean_probability', 'nominate_number_of_votes',
+       'nominate_number_of_errors', 'nokken_poole_dim1', 'nokken_poole_dim2',
+       'state_name']]
+    
+    # Restrict to OpenSecrets bounds of 1999-2020
+    mask_1999_2020 = (voteview_polarization_df["congress"] >= 106) & (116 >= voteview_polarization_df["congress"])
+    voteview_polarization_df = voteview_polarization_df[mask_1999_2020]
+
+    districts = ['American Samoa', 'District Of Columbia', 'Guam',
+       'Puerto Rico', 'Virgin Islands', 'Northern Mariana Islands']
+    
+    states_mask = voteview_polarization_df["state_name"].apply(lambda x: True if x in districts else False)
+    voteview_polarization_df = voteview_polarization_df.drop(voteview_polarization_df[states_mask].index)
+
     voteview_polarization_df["district_code"] = voteview_polarization_df["district_code"].astype(int)
 
     return voteview_polarization_df
 
+# Census data on poverty
 def load_census_poverty_data():
     # Load from CSV:
     saipe_df = pd.read_excel("irs.xls",skiprows=2)
@@ -166,6 +234,7 @@ def load_census_poverty_data():
 
     return saipe_df_clean
 
+# Financial data including spending
 def load_open_secrets_data(root):
     dir = root
 
@@ -201,17 +270,25 @@ def load_open_secrets_data(root):
 
         full_df = pd.concat([full_df, all_features],ignore_index=True)
 
+    # We want
+
     monetary_fields = ["Total Spent", "Cash on Hand", "Total Raised"]
     for monetary_field in monetary_fields:
         full_df[monetary_field] = full_df[monetary_field].apply(lambda x: int(re.sub("[$,]", "",x)))
 
+    # Remove the state/party suffix:
+    full_df["representative"] = full_df["Representative"].apply(lambda x: "".join(x.split('(')[0]).strip())
+
     full_df["state_name"] = full_df["Office Running For"].apply(lambda x: ''.join(x.split()[:-2]))
     full_df["district_code"] = full_df["Office Running For"].apply(lambda x: ''.join(x.split()[-1]))
 
+    # Drop "Office Running For" as we have this info in state_name and district_code, and "Representative" which is now lowercase
+    full_df = full_df.drop(["Office Running For", "Representative"], axis=1)
+
     return full_df
 
+# State demographic data
 def load_KFF_data(root):
-    dir = "KFF"
 
     filenames = {
         "" : "2022",
@@ -233,8 +310,8 @@ def load_KFF_data(root):
     full_kff = pd.DataFrame()
 
     for key,value in filenames.items():
-        year_poverty = pd.read_csv("poverty/"+f"raw_data{key}.csv",skiprows=2,skipfooter=20,engine="python").drop(["Footnotes"],axis=1)
-        year_race = pd.read_csv("race/"+f"raw_data{key}.csv",skiprows=2,skipfooter=20,engine="python").drop(["Footnotes","Total"],axis=1)
+        year_poverty = pd.read_csv(root+"poverty/"+f"raw_data{key}.csv",skiprows=2,skipfooter=20,engine="python").drop(["Footnotes"],axis=1)
+        year_race = pd.read_csv(root+"race/"+f"raw_data{key}.csv",skiprows=2,skipfooter=20,engine="python").drop(["Footnotes","Total"],axis=1)
 
         year_poverty_race = pd.merge(
             year_poverty,
@@ -259,11 +336,12 @@ def load_KFF_data(root):
 
     return full_kff
 
+# Financial data on representatives
 def load_FEC_data(root):
     dir = root
 
     full_df = pd.DataFrame()
-    for year in range(1990, 2023, 2):
+    for year in range(1990, 2022, 2):
         year_range = f"{year-1}-{year+1}" # for whatever reason, the files save as the "last" year
 
         FEC_filename = f"ConCand4_{year}_24m.xlsx"
@@ -271,6 +349,49 @@ def load_FEC_data(root):
         FEC_year_df["year_range"] = year_range
 
         full_df = pd.concat([full_df, FEC_year_df],ignore_index=True)
+
+    full_df.drop(["Coverage End Date"],axis=1, inplace=True)
+
+    drop_mask = (~pd.isna(full_df["Candidate"])) & (~pd.isna(full_df["District"]))
+    full_df = full_df[drop_mask]
+
+    full_df["District"] = full_df["District"].astype(int)
+
+    # Alaska and Delaware have only one house seat each in the House of Congress. The FEC reports this district as "00", but the US census and our polarization data both identify it as "1". We will need to make this change to merge appropriately down the line:
+    single_seat_state_mask = (full_df["District"] == 00)
+    full_df.loc[single_seat_state_mask, "District"] = 1
+
+    # remove whitespaces
+    full_df = full_df.map(lambda x: x.strip() if isinstance(x, str) else x)
+
+    columns = {
+        'year_range' : "year_range",
+        'State' : "state_name",
+        'District' : "district_code",
+        'Candidate' : "representative",
+        'Party' : "party",
+        'Incumbent/\nChallenger/Open' : "running_as",
+        'Receipts' : "receipts",
+        'Contributions \nfrom Individuals' : "contributions_from_individuals",
+        'Contributions\nfrom PACs and\nOther Committees' : "contributions_from_pacs",
+        'Contributions and\nLoans from \n the Candidate' : "contributions_and_loans_from_candidate",
+        'Disbursements' : "disbursements",
+        'Cash On Hand' : "cash_on_hand",
+        'Debts' : "debts",  
+    }
+    full_df = full_df.rename(columns=columns)[['year_range', 'state_name', 'district_code', 'representative', 'party', 'running_as', 'receipts',
+        'contributions_from_individuals', 'contributions_from_pacs',
+        'contributions_and_loans_from_candidate', 'disbursements',
+        'cash_on_hand', 'debts']]
+    
+    # Get session of congress from year
+    congress = 101
+    full_df["congress"] = full_df["year_range"].apply(lambda x: congress+((int(x[:4])-1989)//2))
+
+    # Remove districts, non-state entities with no voting power in congress:
+    districts = ['District Of Columbia', 'American Samoa', 'Guam', 'Northern Mariana', 'Puerto Rico', 'Virgin Islands']
+    states_mask = full_df["state_name"].apply(lambda x: True if x in districts else False)
+    full_df = full_df.drop(full_df[states_mask].index)
 
     return full_df
 
