@@ -1,6 +1,8 @@
 
 import re
+import math
 import requests
+import geopandas
 import numpy as np
 import pandas as pd
 from io import StringIO
@@ -100,7 +102,7 @@ def get_age(x):
     return age
 
 def get_parties():# get a unique mapping of all parties the US has ever had registered:
-    parties_df = pd.read_csv("HSall_parties.csv")
+    parties_df = pd.read_csv("fresh_data/HSall_parties.csv")
     parties_df = parties_df.groupby(['party_code','party_name'])["n_members"].sum().reset_index().rename(columns={'n_members':'count_all_time'})
     return {party_code:parties_df[parties_df["party_code"] == party_code]["party_name"].item() for party_code in parties_df["party_code"].unique()}
 
@@ -115,7 +117,9 @@ def get_populations(root):
 
     return total_population_1970_2020
 
-def get_religions():
+def get_religions_and_geography():
+    # Get religious composition of states as well as geographic data
+
     # Scrape the PEW Research Center for their statistics on the current religous landscape:
     url = "https://www.pewresearch.org/religion/religious-landscape-study/state/"
     headers = {
@@ -148,13 +152,25 @@ def get_religions():
         left_on="State",
         how="inner"
     ).drop("Religious tradition", axis=1)
+
+    # Get geographical data for states
+    # states_geodata = geopandas.read_file('fresh_data/geodata/usa-states-census-2014.shp')
+
+    # full_table = pd.merge(
+    #     full_table,
+    #     states_geodata,
+    #     how="left",
+    #     left_on="State",
+    #     right_on="NAME"
+    # )
+
     return full_table
 
 # Polarization data on representatives
 def load_polarization_data():
 
     # Load from CSV:
-    voteview_polarization_df = pd.read_csv("member_ideology_house_all_years.csv")
+    voteview_polarization_df = pd.read_csv("fresh_data/member_ideology_house_all_years.csv")
 
     # Remove president from assessment:
     voteview_polarization_df = voteview_polarization_df[voteview_polarization_df["chamber"]=="House"]
@@ -177,8 +193,8 @@ def load_polarization_data():
        'nominate_number_of_errors', 'nokken_poole_dim1', 'nokken_poole_dim2',
        'state_name']]
     
-    # Restrict to OpenSecrets bounds of 1999-2020
-    mask_1999_2020 = (voteview_polarization_df["congress"] >= 106) & (116 >= voteview_polarization_df["congress"])
+    # Restrict to FEC bounds of 1990-2022
+    mask_1999_2020 = (voteview_polarization_df["congress"] >= 101) & (116 >= voteview_polarization_df["congress"])
     voteview_polarization_df = voteview_polarization_df[mask_1999_2020]
 
     districts = ['American Samoa', 'District Of Columbia', 'Guam',
@@ -188,6 +204,22 @@ def load_polarization_data():
     voteview_polarization_df = voteview_polarization_df.drop(voteview_polarization_df[states_mask].index)
 
     voteview_polarization_df["district_code"] = voteview_polarization_df["district_code"].astype(int)
+
+    # Get the years of each congressional session:
+    year = 1989
+    voteview_polarization_df["year_range"] = voteview_polarization_df["congress"].apply(lambda x: f"{ year+((x-101)*2) }-{ year+((x-101)*2)+2 }")
+
+    values = {
+        "nominate_number_of_votes": 0
+    }
+
+    # Create age column
+    voteview_polarization_df["age"] = voteview_polarization_df.apply(lambda x: get_age(x), axis=1)
+    voteview_polarization_df.drop(["died"], axis=1, inplace=True)
+
+    # Recode NaNs and drop rows with properly missing values:
+    voteview_polarization_df = voteview_polarization_df.fillna(value=values)
+    voteview_polarization_df = voteview_polarization_df[voteview_polarization_df["nominate_dim1"].notna()]
 
     return voteview_polarization_df
 
@@ -289,6 +321,7 @@ def load_open_secrets_data(root):
 
 # State demographic data
 def load_KFF_data(root):
+    # https://www.kff.org/other/state-indicator/total-residents/?currentTimeframe=0&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D
 
     filenames = {
         "" : "2022",
@@ -333,6 +366,11 @@ def load_KFF_data(root):
         full_kff[column] = full_kff[column].apply(lambda x: np.nan if type(x) != float and "<" in x else float(x))
         if bool(re.search(r'\d', column)):
             full_kff = full_kff.rename({column:"poverty_"+column},axis=1)
+
+    values = {column:0 for column in full_kff.columns}
+
+    # Recode NaNs and drop rows with properly missing values:
+    full_kff = full_kff.fillna(value=values)
 
     return full_kff
 
@@ -392,6 +430,44 @@ def load_FEC_data(root):
     districts = ['District Of Columbia', 'American Samoa', 'Guam', 'Northern Mariana', 'Puerto Rico', 'Virgin Islands']
     states_mask = full_df["state_name"].apply(lambda x: True if x in districts else False)
     full_df = full_df.drop(full_df[states_mask].index)
+
+    # Manually reconcile redistricts:
+
+    # In 2013, AZ's 8th district became the 2nd, and VoteView expects the update:
+    redistrict_mask = (full_df["year_range"] == "2011-2013") & (full_df["representative"] == "BARBER, RONALD")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 8
+
+    # In 2013, NY's parts of 26th district became the 27th district, but Kathy Hochul occupied the 26th district, not the 27th.:
+    redistrict_mask = (full_df["year_range"] == "2011-2013") & (full_df["representative"] == "HOCHUL, KATHLEEN COURTNEY")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 26
+
+    # In 2003, the NY's 31st district was redistricted into the 29th district. Houghton Amory Jr. represented the 31st at this time:
+    redistrict_mask = (full_df["year_range"] == "2001-2003") & (full_df["representative"] == "HOUGHTON, AMORY")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 31
+
+    # Conor Lamb switched districts in 2019, but the FEC reports his old district
+    redistrict_mask = (full_df["year_range"] == "2017-2019") & (full_df["representative"] == "LAMB, CONOR")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 18
+
+    # Taylor Eugene's 5th district was redistricted to the 4th in 2000. The FEC records this too late:
+    redistrict_mask = (full_df["year_range"] == "2001-2003") & (full_df["representative"] == "TAYLOR, GARY EUGENE (GENE)")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 5
+
+    # Steven Latourette's district was redistricted to the 17th in 1992. FEC records this too late:
+    redistrict_mask = (full_df["year_range"] == "2001-2003") & (full_df["representative"] == "LATOURETTE, STEVEN C")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 19
+
+    # Sander Levin's 17th district was redistricted to the 12th in 1992. FEC records this too late:
+    redistrict_mask = (full_df["year_range"] == "1991-1993") & (full_df["representative"] == "LEVIN, SANDER")
+    full_df.loc[full_df[redistrict_mask].index, "district_code"] = 17
+
+
+    # Replace NaNs:
+    values = {column:0 for column in full_df.columns}
+    values["party"] = "No Party Affiliation"
+
+    # Recode NaNs and drop rows with properly missing values:
+    full_df = full_df.fillna(value=values)
 
     return full_df
 
