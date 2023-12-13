@@ -347,9 +347,6 @@ def get_df():
         "Historically Black Protestant", "Jehovah's Witness", "Jewish", 
         "Mainline Protestant", "Mormon", "Muslim", "Orthodox Christian", "Unaffiliated (religious \"nones\")",
         "population",
-
-        # Geodata:
-        'STATEFP', 'STATENS', 'AFFGEOID', 'GEOID', 'STUSPS', 'NAME', 'LSAD', 'region', 'geometry'
     ]
 
     full_df = full_df[columns]
