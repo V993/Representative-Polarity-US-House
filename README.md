@@ -1,11 +1,18 @@
-# Predicting Ideological Polarity in the House of Representatives
+# Predicting Ideological Scores in the House of Representatives
 #### Author: Leonardo Matone
 
 Site accessible at: [https://v993.github.io/Representative-Polarity-US-House/](https://v993.github.io/Representative-Polarity-US-House/)
 
+## Project Goal:
+Quantification of a representative in ideological "space" allows us to summarize who a representative is without studying their voting patterns or past policies. We can tell a lot about a representative by comparing them to their peers and contextualizing their ideology in relation to others. It would be a lot easier to say that a person is quantifiably -0.7 on an ideological scale compared to their colleagues than it would be to summarize the legislative decisions they have made. 
+
+Famously, [Poole and Rosenthal]([url](https://www.jstor.org/stable/2111172)) estimate spatial coordinates for representatives using political choices: votes. Poole and Rosenthal's DW-NOMINATE system (Dynamic Weighted NOMINAI-Three-step-Estimation) represents legislators in two-dimensional map showing how similar their voting records are, and theoretically, their political ideologies. This also means that the means by which we may compute a representative's position in this space are still confined to those politicians who we know through voting records. New representatives who have never voted obviously cannot have a NOMINATE score.
+
+This study proposes an alternative- computing a representative's NOMINATE score without their voting data. By using state demographic information and surface-level data on a representative's finances, we propose a model which covers 90% of the variance of congressional sessions from 1989-2021, and discuss shortcomings and possible future uses.
+
 ## Data:
 
-The ETL process for all of the sources utilized in this project is very long and complex. The two main files required to recreate the data used in this study are **data.py** and **fresh_data/get_datasets.py**. The former includes the process of merging all collected tables, and the latter includes functional calls to collect each table from various sources. A combination of web scraping, mass file downloads, and the occasional API call led to the sources attached here.
+The ETL process for all of the sources utilized in this project was very long and complex. The two main files required to recreate the data used in this study are **data.py** and **fresh_data/get_datasets.py**. The former includes the process of merging all collected tables, and the latter includes functional calls to collect each table from various sources. A combination of web scraping, mass file downloads, and the occasional API call led to the sources attached here.
 
 An example of loading the data (which takes around 1.5 minutes) is in this project's webpage, and the final notebook (**leonardo_final.ipynb**). Information about decisions made in data wrangling can be found in the aforementioned files, and several notebooks exist in the root of this diretory (prefixed with "test") which include rudementary explorations of the data used in the merging process.
 
