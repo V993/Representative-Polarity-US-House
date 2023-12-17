@@ -10,6 +10,8 @@ Famously, [Poole and Rosenthal]([url](https://www.jstor.org/stable/2111172)) est
 
 This study proposes an alternative- computing a representative's NOMINATE score without their voting data. By using state demographic information and surface-level data on a representative's finances, we propose a model which covers 90% of the variance of congressional sessions from 1989-2021, and discuss shortcomings and possible future uses.
 
+A deck with a quick summary is available in the main repository under [Political Polarization.pptx](https://github.com/V993/Representative-Polarity-US-House/blob/main/Political%20Polarization.pptx). A full breakdown of the project exists in the site linked above, and the main proect notebook is available in the main repository under [leonardo_final.ipynb](https://github.com/V993/Representative-Polarity-US-House/blob/main/leonardo_final.ipynb).
+
 ## Data:
 
 The ETL process for all of the sources utilized in this project was very long and complex. The two main files required to recreate the data used in this study are **data.py** and **fresh_data/get_datasets.py**. The former includes the process of merging all collected tables, and the latter includes functional calls to collect each table from various sources. A combination of web scraping, mass file downloads, and the occasional API call led to the sources attached here.
